@@ -1,67 +1,76 @@
 /* candal-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Candal';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/candal-v15-latin-regular.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/candal-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/candal-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/candal-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/candal-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/candal-v15-latin-regular.svg#Candal') format('svg'); /* Legacy iOS */
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Candal";
+
+  font-display: swap;
+  src: url("../fonts/candal-v15-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/candal-v15-latin-regular.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */
+    url("../fonts/candal-v15-latin-regular.woff2") format("woff2"),
+    /* Super Modern Browsers */
+    url("../fonts/candal-v15-latin-regular.woff") format("woff"),
+    /* Modern Browsers */
+    url("../fonts/candal-v15-latin-regular.ttf") format("truetype"),
+    /* Safari, Android, iOS */
+    url("../fonts/candal-v15-latin-regular.svg#Candal") format("svg");
+  /* Legacy iOS */
 }
 
 :root {
-  font-size: 62.5%;
-  overflow-y: auto;
-  background-color: red;
   overflow: hidden;
-  --scrollbar-width: 1em;
+  overflow-y: auto;
+
+  font-size: 62.5%;
+
+  --active-color: #9200d7;
+  --main-color: #686868;
   --page-gap: 1rem;
   --page-padding: 0.5em;
-  --main-color: #686868;;
-  --active-color: #9200d7;
+  --rainbow-gr: linear-gradient(90deg,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 154, 0, 1) 10%,
+      rgba(208, 222, 33, 1) 20%,
+      rgba(79, 220, 74, 1) 30%,
+      rgba(63, 218, 216, 1) 40%,
+      rgba(47, 201, 226, 1) 50%,
+      rgba(28, 127, 238, 1) 60%,
+      rgba(95, 21, 242, 1) 70%,
+      rgba(186, 12, 248, 1) 80%,
+      rgba(251, 7, 217, 1) 90%,
+      rgba(255, 0, 0, 1) 100%);
+  --scrollbar-width: 1em;
   --selected-color: #000000;
-  --rainbow-gr: linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 154, 0, 1) 10%,
-    rgba(208, 222, 33, 1) 20%,
-    rgba(79, 220, 74, 1) 30%,
-    rgba(63, 218, 216, 1) 40%,
-    rgba(47, 201, 226, 1) 50%,
-    rgba(28, 127, 238, 1) 60%,
-    rgba(95, 21, 242, 1) 70%,
-    rgba(186, 12, 248, 1) 80%,
-    rgba(251, 7, 217, 1) 90%,
-    rgba(255, 0, 0, 1) 100%
-  );
 }
 
-
 .page {
-  height: 100%;
-  overflow: hidden;
-  background-color: rgb(96, 96, 198);
-  background: rgba(0, 0, 0, 0.5); 
-  background-image: url("../images/accordion.webp");
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: stretch;
-  font-family: 'Candal', sans-serif;
+  height: 100%;
   padding: var(--page-padding);
+  overflow: hidden;
+
+  font-family: "Candal", sans-serif;
+
+  background: rgba(0, 0, 0, 0.5);
+  background-image: url("../images/accordion.webp");
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+
   gap: var(--page-gap);
 }
 
 .header {
-  color: #ffffff;
   padding: 0.5em;
+
+  color: #ffffff;
 }
 
 .header__title {
@@ -70,15 +79,16 @@
 
 .main {
   flex-grow: 1;
-  scrollbar-gutter: stable;
-  overflow-y: auto;
   padding-left: var(--scrollbar-width);
+  overflow-y: auto;
+
+  scrollbar-gutter: stable;
 }
 
 ::-webkit-scrollbar {
   width: var(--scrollbar-width);
-  background-color: transparent;
 
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -86,37 +96,39 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
   background: #ffffff8e;
+  border-radius: 1rem;
 }
 
 .container {
-  margin: 0 auto;
-  width: calc(100% - var(--scrollbar-width));
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+  width: calc(100% - var(--scrollbar-width));
+  margin: 0 auto;
 }
 
 .memes-list {
   display: flex;
-  background: #ffffffe6;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 2em;
-  border-radius: 1em;
   width: 100%;
+  padding: 2em;
+
+  background: #ffffffe6;
+  border-radius: 1em;
 }
 
 .memes-list__item {
-  width: 100%;
   display: block;
-  cursor: pointer;
+  width: 100%;
+
   border-top: 0.1rem solid;
-  border-image-slice: 1;
   border-image-source: var(--rainbow-gr);
+  border-image-slice: 1;
+  cursor: pointer;
 }
 
 .item__input {
@@ -130,15 +142,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.8em;
-  gap: 0.8em;
+
   font-size: 1.2em;
+
+  gap: 0.8em;
 }
 
 .item__content {
   color: var(--main-color);
 }
 
-.item__input:checked ~ .item__content {
+.item__input:checked~.item__content {
   color: var(--selected-color);
 }
 
@@ -146,36 +160,41 @@
   display: inline-block;
   width: 1em;
   height: 1em;
-  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+
   background-color: var(--main-color);
   transform: rotate(45deg);
+
   transition: transform 0.4s ease;
+
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
-.item__input:checked ~ .item__content .item__icon {
-  transform: rotate(0deg);
+.item__input:checked~.item__content .item__icon {
   background-color: var(--selected-color);
+  transform: rotate(0deg);
 }
 
 .item__pic {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
   max-height: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   padding: 0;
-  transition: max-height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);;
+  overflow: hidden;
+
+  transition: max-height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .item__img {
-  object-fit: contain;
   width: 100%;
   max-width: 50rem;
   height: 100%;
+
+  object-fit: contain;
 }
 
-.item__input:checked ~ .item__content .item__pic {
+.item__input:checked~.item__content .item__pic {
   max-height: 200vh;
   padding: 1em 5%;
 }
@@ -189,13 +208,13 @@
     background-color: var(--selected-color);
   }
 
-  .item__input:active ~ .item__content {
+  .item__input:active~.item__content {
     color: var(--active-color);
   }
 
-  .item__input:active ~ .item__content .item__icon {
+  .item__input:active~.item__content .item__icon {
     background-color: var(--active-color);
-  }  
+  }
 
   .item__icon {
     opacity: 0;
@@ -221,6 +240,7 @@
   :root {
     --page-padding: 1em;
   }
+
   .page {
     font-size: 1.4rem;
   }
