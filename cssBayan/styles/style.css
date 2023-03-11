@@ -17,11 +17,26 @@
   overflow-y: auto;
   background-color: red;
   overflow: hidden;
-  --scrollbar-width: 1rem;
-  --page-padding: 0.5rem;
+  --scrollbar-width: 1em;
+  --page-gap: 1rem;
+  --page-padding: 0.5em;
   --main-color: #686868;;
   --active-color: #9200d7;
   --selected-color: #000000;
+  --rainbow-gr: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  );
 }
 
 
@@ -41,12 +56,16 @@
   align-items: stretch;
   font-family: 'Candal', sans-serif;
   padding: var(--page-padding);
-  gap: 1rem;
+  gap: var(--page-gap);
 }
 
 .header {
   color: #ffffff;
   padding: 0.5em;
+}
+
+.header__title {
+  font-size: 2em;
 }
 
 .main {
@@ -86,16 +105,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 1em;
   padding: 2em;
   border-radius: 1em;
+  width: 100%;
 }
 
 .memes-list__item {
   width: 100%;
   display: block;
   cursor: pointer;
-  border: 1px solid;
+  border-top: 0.1rem solid;
+  border-image-slice: 1;
+  border-image-source: var(--rainbow-gr);
 }
 
 .item__input {
@@ -108,9 +129,9 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5em;
+  padding: 0.8em;
   gap: 0.8em;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .item__content {
@@ -148,13 +169,15 @@
 }
 
 .item__img {
-  max-width: 90%;
-  height: auto;
+  object-fit: contain;
+  width: 100%;
+  max-width: 50rem;
+  height: 100%;
 }
 
 .item__input:checked ~ .item__content .item__pic {
-  max-height: 100vh;
-  padding: 1em 0;
+  max-height: 200vh;
+  padding: 1em 5%;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -183,7 +206,38 @@
   }
 
   .memes-list__item:hover .item__pic {
-    max-height: 100vh;
-    padding: 1em 0;
+    max-height: 200vh;
+    padding: 1em 5%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .page {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --page-padding: 1em;
+  }
+  .page {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .page {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    max-width: 100rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page {
+    font-size: 1.8rem;
   }
 }
