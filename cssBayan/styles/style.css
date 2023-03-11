@@ -199,7 +199,7 @@
   padding: 1em 5%;
 }
 
-@media (hover: hover) and (pointer: fine) and (min-width: 1920px) {
+@media (hover: hover) and (pointer: fine) {
   .memes-list:hover .item__content {
     color: var(--selected-color);
   }
