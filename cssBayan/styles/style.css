@@ -1,0 +1,267 @@
+/* candal-regular - latin */
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Candal";
+
+  font-display: swap;
+  src: url("../fonts/candal-v15-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/candal-v15-latin-regular.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */
+    url("../fonts/candal-v15-latin-regular.woff2") format("woff2"),
+    /* Super Modern Browsers */
+    url("../fonts/candal-v15-latin-regular.woff") format("woff"),
+    /* Modern Browsers */
+    url("../fonts/candal-v15-latin-regular.ttf") format("truetype"),
+    /* Safari, Android, iOS */
+    url("../fonts/candal-v15-latin-regular.svg#Candal") format("svg");
+  /* Legacy iOS */
+}
+
+:root {
+  overflow: hidden;
+  overflow-y: auto;
+
+  font-size: 62.5%;
+
+  --active-color: #9200d7;
+  --main-color: #686868;
+  --page-gap: 1rem;
+  --page-padding: 0.5em;
+  --rainbow-gr: linear-gradient(90deg,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 154, 0, 1) 10%,
+      rgba(208, 222, 33, 1) 20%,
+      rgba(79, 220, 74, 1) 30%,
+      rgba(63, 218, 216, 1) 40%,
+      rgba(47, 201, 226, 1) 50%,
+      rgba(28, 127, 238, 1) 60%,
+      rgba(95, 21, 242, 1) 70%,
+      rgba(186, 12, 248, 1) 80%,
+      rgba(251, 7, 217, 1) 90%,
+      rgba(255, 0, 0, 1) 100%);
+  --scrollbar-width: 1em;
+  --selected-color: #000000;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  padding: var(--page-padding);
+  overflow: hidden;
+
+  font-family: "Candal", sans-serif;
+
+  background: rgba(0, 0, 0, 0.5);
+  background-image: url("../images/accordion.webp");
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+
+  gap: var(--page-gap);
+}
+
+.header {
+  padding: 0.5em;
+
+  color: #ffffff;
+}
+
+.header__title {
+  font-size: 2em;
+}
+
+.main {
+  flex-grow: 1;
+  padding-left: var(--scrollbar-width);
+  overflow-y: auto;
+
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff8e;
+  border-radius: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: calc(100% - var(--scrollbar-width));
+  margin: 0 auto;
+}
+
+.memes-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 2em;
+
+  background: #ffffffe6;
+  border-radius: 1em;
+}
+
+.memes-list__item {
+  display: block;
+  width: 100%;
+
+  border-top: 0.1rem solid;
+  border-image-source: var(--rainbow-gr);
+  border-image-slice: 1;
+  cursor: pointer;
+}
+
+.item__input {
+  display: none;
+}
+
+.item__header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em;
+
+  font-size: 1.2em;
+
+  gap: 0.8em;
+}
+
+.item__content {
+  color: var(--main-color);
+}
+
+.item__input:checked~.item__content {
+  color: var(--selected-color);
+}
+
+.item__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  background-color: var(--main-color);
+  transform: rotate(45deg);
+
+  transition: transform 0.4s ease;
+
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+
+.item__input:checked~.item__content .item__icon {
+  background-color: var(--selected-color);
+  transform: rotate(0deg);
+}
+
+.item__pic {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  transition: max-height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.item__img {
+  width: 100%;
+  max-width: 50rem;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.item__input:checked~.item__content .item__pic {
+  max-height: 200vh;
+  padding: 1em 5%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .memes-list:hover .item__content {
+    color: var(--selected-color);
+  }
+
+  .memes-list:hover .item__icon {
+    background-color: var(--selected-color);
+  }
+
+  .memes-list__item:hover .item__icon {
+    transform: rotate(0deg);
+  }
+
+  .item__input:active~.item__content {
+    color: var(--active-color);
+  }
+
+  .item__input:active~.item__content .item__icon {
+    background-color: var(--active-color);
+  }
+
+  .item__icon {
+    opacity: 0;
+  }
+
+  .memes-list:hover .item__icon {
+    opacity: 1;
+  }
+
+  .memes-list__item:hover .item__pic {
+    max-height: 200vh;
+    padding: 1em 5%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .page {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --page-padding: 1em;
+  }
+
+  .page {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .page {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    max-width: 100rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page {
+    font-size: 1.8rem;
+  }
+}
