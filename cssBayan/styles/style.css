@@ -208,6 +208,10 @@
     background-color: var(--selected-color);
   }
 
+  .memes-list__item:hover .item__icon {
+    transform: rotate(0deg);
+  }
+
   .item__input:active~.item__content {
     color: var(--active-color);
   }
